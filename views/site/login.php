@@ -7,6 +7,7 @@ use \yii\widgets\ActiveForm;
 ?>
 <?= $form->field($login_model, 'email')->textInput() ?>
 
+<?= $form->field($login_model, 'username')->textInput() ?>
 
 <?= $form->field($login_model, 'password')->passwordInput() ?>
 

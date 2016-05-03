@@ -6,12 +6,18 @@ use Yii;
 use yii\web\Controller;
 use app\models\Signup;
 use app\models\Login;
+use app\models\MyList;
 
 class SiteController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $array = MyList::getAll();
+        return $this->render('index',['model'=>$array]);
+        // $var = 'Моя страница';
+        // $array = MyList::getAll();
+        // return $this->render('index', ['arrayInView'=>$array]);
+        // return $this->render('index');
     }
     public function actionLogout()
     {
@@ -56,5 +62,19 @@ class SiteController extends Controller
             }
         }
         return $this->render('login', ['login_model'=>$login_model]);
+    }
+
+    public function actionCreate()
+    {
+        $model = new MyList();
+
+        if ($_POST['MyList']) {
+            $model->post = $_POST['MyList']['post'];
+            $model->username = Yii::$app->user->identity->username;
+            if ($model->validate() && $model->save()) {
+                return $this->redirect(['index']);
+            }
+        }
+        return $this->render('create',['model'=>$model]);
     }
 }

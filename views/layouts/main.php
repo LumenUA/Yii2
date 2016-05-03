@@ -38,13 +38,14 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Signup', 'url' => ['/site/signup']],
+            ['label' => 'Create', 'url' => ['/site/create']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->email . ')',
+                    'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()

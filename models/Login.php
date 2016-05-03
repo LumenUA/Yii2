@@ -11,14 +11,16 @@ class Login extends Model
 {
 	public $email;
 	public $password;
+	public $username;
 
 
 	public function rules()
 	{
 		return [
 
-			[['email', 'password'], 'required'],
+			[['email', 'password', 'username'], 'required'],
 			['email', 'email'],
+			['username', 'validatePassword'],
 			['password', 'validatePassword'] // функция для валидации пароля
 		];
 	}
@@ -39,6 +41,6 @@ class Login extends Model
 	}
 	public function getUser()
 	{
-		return User::findOne(['email'=>$this->email]); //получаем его по введеному  имайлу
+		return User::findOne(['username'=>$this->username]); //получаем его по введеному  имайлу
 	}
 }

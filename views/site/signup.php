@@ -5,7 +5,9 @@ use \yii\widgets\ActiveForm;
 <?php
 	$form = ActiveForm::begin(['class'=>'form-horizontal']);
 ?>
-<?= $form->field($model, 'email')->textInput(['autofocus'=>true]) ?>
+<?= $form->field($model, 'email')->textInput() ?>
+
+<?= $form->field($model, 'username')->textInput(['autofocus'=>true]) ?>
 
 
 <?= $form->field($model, 'password')->passwordInput() ?>
