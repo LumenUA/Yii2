@@ -13,6 +13,14 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    public function actionLogout()
+    {
+        if (!Yii::$app->user->isGuest) 
+        {
+            Yii::$app->user->logout();
+            return $this->redirect(['login']);
+        }
+    }
     public function actionSignup()
     {
         $model = new Signup();
