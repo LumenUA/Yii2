@@ -10,6 +10,22 @@ use app\models\MyList;
 
 class SiteController extends Controller
 {
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = MyList::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
     public function actionIndex()
     {
         $array = MyList::getAll();
@@ -70,6 +86,8 @@ class SiteController extends Controller
 
         if ($_POST['MyList']) {
             $model->post = $_POST['MyList']['post'];
+            $model->textprewie = $_POST['MyList']['textprewie'];
+            $model->img = $_POST['MyList']['img'];
             $model->username = Yii::$app->user->identity->username;
             if ($model->validate() && $model->save()) {
                 return $this->redirect(['index']);
