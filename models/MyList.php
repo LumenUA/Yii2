@@ -41,7 +41,7 @@ class MyList extends \yii\db\ActiveRecord
             $this->filename = 'uploads' . $this->string . '.' . $this->image->extension;
             $this->image->saveAs($this->filename);
             //save
-            $this->img = '/uploads' . $this->filename;
+            $this->img = '/' . $this->filename;
         }else{
             $this->img = UploadedFile::getInstance($this, 'images');
             if ($this->img) {

@@ -21,9 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
  <div class="row">
     <?php foreach ($model as $arr) { ?>
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-8">
     <div class="thumbnail">
-
+<img src="<?=$arr->img?>">
       <div class="caption">
         <h3><?= $arr->textprewie ?></h3>
         <p><?=$arr->username?></p>

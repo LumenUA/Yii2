@@ -63,7 +63,7 @@ class Post extends \yii\db\ActiveRecord
         {
             $this->string = substr(uniqid('img'), 0, 12);
             $this->image = UploadedFile::getInstance($this, 'img');
-            $this->filename = 'uploads' . $this->string . '.' . $this->image->extension;
+            $this->filename = 'uploads/' . $this->string . '.' . $this->image->extension;
             $this->image->saveAs($this->filename);
             //save
             $this->img = '/uploads' . $this->filename;
